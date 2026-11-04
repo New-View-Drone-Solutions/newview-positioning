@@ -6,17 +6,19 @@ New View Positioning is a ground control app for MAVLink aircraft (ArduPilot and
 
 It runs on Windows (portable zip, no install needed), and an **Android beta for testers** is out now: it also reads live **ELRS / CRSF** telemetry straight from an EdgeTX radio. macOS and Linux builds come from the same Kotlin codebase and are on the way.
 
+**New View Positioning is free, and it stays free.** If it helps you, the best way to say thanks is to follow NewView FPV: [Instagram](https://www.instagram.com/newviewfpv), [YouTube](https://www.youtube.com/@NewViewFPV), [Facebook](https://www.facebook.com/NewViewFPV/) and [newviewdronesolutions.com](https://www.newviewdronesolutions.com/). New apps, updates and flying videos land there first. The app shows these links once when it first opens (**Follow** brings them back); following is optional and nothing is locked.
+
 ![Map and 3D chase view side by side during a demo flight over the Grand Canyon](docs/screenshots/01-grand-canyon-map-and-3d.jpg)
 
 ## Download
 
 Get the latest Windows build from the [Releases page](../../releases/latest):
 
-- **`NewViewPositioning-Windows-portable-1.0.6.zip`**: no install. Unzip anywhere and run `NewViewPositioning\NewViewPositioning.exe`.
+- **`NewViewPositioning-Windows-portable-1.0.7.zip`**: no install. Unzip anywhere and run `NewViewPositioning\NewViewPositioning.exe`.
 
 It includes everything it needs, so there's no Java to install. The app isn't code-signed yet, so Windows may show a SmartScreen warning: choose **More info › Run anyway**.
 
-**Android beta:** `NewViewPositioning-0.5.2-beta.apk` is on the [android-v0.5.2-beta pre-release](../../releases/tag/android-v0.5.2-beta). See [Android beta](#android-beta) below.
+**Android beta:** `NewViewPositioning-0.5.3-beta.apk` is on the [android-v0.5.3-beta pre-release](../../releases/tag/android-v0.5.3-beta). See [Android beta](#android-beta) below.
 
 ## Try it in 30 seconds
 
@@ -62,6 +64,7 @@ You can also start a demo straight from a shortcut, for example `NewViewPosition
 - USB telemetry radios (SiK, RFD900) or a flight controller's own USB port, at 57600, 115200 or 921600 baud.
 - **Bluetooth Classic** serial modules (HC-05, HC-06 and similar). On Windows a paired module shows up as a serial port marked "Bluetooth".
 - **UDP port 14550** for ArduPilot SITL, MAVProxy or a network bridge.
+- New in 1.0.7: **ELRS / CRSF** telemetry is recognised by itself on a serial link, for example an EdgeTX radio's USB port set to Telemetry Mirror (the same code as the Android beta; not yet tried with a radio on Windows).
 - Once the autopilot's heartbeat arrives, the app sends its own 1 Hz heartbeat and asks for position, attitude, speeds, battery, GPS and home.
 
 **Google Earth export**
@@ -77,7 +80,7 @@ You can also start a demo straight from a shortcut, for example `NewViewPosition
 
 ## Android beta
 
-**New View Positioning for Android 0.5.2 beta** is a tester build: it isn't on Google Play yet. Plug your EdgeTX radio into your phone and see your aircraft live on the map and in 3D.
+**New View Positioning for Android 0.5.3 beta** is a tester build: it isn't on Google Play yet. Plug your EdgeTX radio into your phone and see your aircraft live on the map and in 3D.
 
 ![The Android beta on a Pixel 10 Pro Fold, unfolded: map, 3D view and live readings during a Grand Canyon demo flight](docs/screenshots/android/01-pixel-fold-grand-canyon.jpg)
 
@@ -93,7 +96,7 @@ You can also start a demo straight from a shortcut, for example `NewViewPosition
 |---|---|
 | ![Folded layout on the cover screen](docs/screenshots/android/03-folded.jpg) | ![The Connect box](docs/screenshots/android/04-connect.jpg) |
 
-**Installing:** Android 8.0 or newer (10 or newer recommended), with mobile data or Wi-Fi for the maps. Download the APK from the pre-release and tap it in **Files**; allow installs from that source when asked. If Google Play Protect says the app is blocked, tap **More details › Install anyway**. 0.5.2 installs over 0.5.0 and 0.5.1 and keeps your settings; if you have an older New View test build (0.4.x), uninstall it first. The SHA-256 of the APK is listed with the release.
+**Installing:** Android 8.0 or newer (10 or newer recommended), with mobile data or Wi-Fi for the maps. Download the APK from the pre-release and tap it in **Files**; allow installs from that source when asked. If Google Play Protect says the app is blocked, tap **More details › Install anyway**. 0.5.3 installs over 0.5.0, 0.5.1 and 0.5.2 and keeps your settings; if you have an older New View test build (0.4.x), uninstall it first. The SHA-256 of the APK is listed with the release.
 
 **Feedback:** **More › Send feedback** in the app, or email info@newviewdronesolutions.com with your phone model, Android version, radio and link, and screenshots or a screen recording.
 
@@ -103,7 +106,7 @@ New View Positioning is a **situational-awareness aid only**. It isn't a navigat
 
 ## Status
 
-v1.0.6 is an early release. Here's what has and hasn't been checked so far:
+v1.0.7 is an early release. Here's what has and hasn't been checked so far:
 
 | Area | Status |
 |---|---|
@@ -114,9 +117,9 @@ v1.0.6 is an early release. Here's what has and hasn't been checked so far:
 | Live connection to a real aircraft | Not flight-tested yet. MAVLink handling is covered by tests and checked against pymavlink. |
 | Bluetooth Classic | Written and type-checked, not yet tried with a real module. |
 | Google Earth Pro live link | Covered by tests; the upgraded live link (3D model, chase camera) hasn't been checked on screen yet. |
-| Android phone app | **0.5.2 beta for testers.** Live CRSF over USB and Bluetooth (HC-05/06) checked on a real EdgeTX radio, and the app checked on a Pixel 10 Pro Fold. The automated test suite passes. Not on Google Play yet. |
+| Android phone app | **0.5.3 beta for testers.** Live CRSF over USB and Bluetooth (HC-05/06) checked on a real EdgeTX radio, and the app checked on a Pixel 10 Pro Fold. The automated test suite passes. Not on Google Play yet. |
 | macOS and Linux | Not released yet. |
-| Map licences | NSW aerial photos may need Spatial Services' OK before being draped in 3D in a product that's sold, and Esri's terms want an ArcGIS account for released apps. |
+| Map licences | The default maps are open data (CC BY). Esri imagery is optional, and Esri's terms want an ArcGIS account for released apps. |
 
 ## Roadmap
 
@@ -141,6 +144,7 @@ Map data © State of New South Wales (Spatial Services); Sentinel-2 cloudless 20
 - Website: https://www.newviewdronesolutions.com/
 - Instagram: https://www.instagram.com/newviewfpv
 - YouTube: https://www.youtube.com/@NewViewFPV
+- Facebook: https://www.facebook.com/NewViewFPV/
 - Discord: bigredfpv
 
 © 2026 New View Drone Solutions. All rights reserved.
